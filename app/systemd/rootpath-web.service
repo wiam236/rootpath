@@ -1,0 +1,14 @@
+[Unit]
+Description=Rootpath vulnerable web service
+After=network.target
+
+[Service]
+Type=simple
+User=websvc
+WorkingDirectory=/opt/rootpath/app
+ExecStart=/opt/rootpath/app/venv/bin/python3 /opt/rootpath/app/src/app.py
+Restart=on-failure
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
